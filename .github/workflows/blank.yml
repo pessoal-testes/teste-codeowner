@@ -23,9 +23,21 @@ jobs:
           echo Adicione outras ações para construir,
           echo testar e implantar seu projeto.
 
+  open-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - run: |
+          gh issue --repo ${{ github.repository }} \
+            create --title "Issue title" --body "Issue body"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   buscar_pull_requests:
     runs-on: ubuntu-latest
-
+    needs: open-issue
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v3
