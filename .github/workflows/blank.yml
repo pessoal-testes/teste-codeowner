@@ -54,6 +54,8 @@ jobs:
 
       - name: Adicionar revisores aos Pull Requests
         if: steps.find_pull_requests.outputs.pull_requests != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for pr_number in ${{ steps.find_pull_requests.outputs.pull_requests }}; do
             echo "Adicionando revisores ao Pull Request #$pr_number"
