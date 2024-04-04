@@ -59,6 +59,7 @@ jobs:
         run: |
           for pr_number in ${{ steps.find_pull_requests.outputs.pull_requests }}; do
             echo "Adicionando revisores ao Pull Request #$pr_number"
-            gh pr edit $pr_number --add-reviewer andressagomes 
+            gh pr edit $pr_number --add-reviewer @pessoal-teste/delta
           done
+
 
