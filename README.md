@@ -1,1 +1,1 @@
-# teste-codeowner
+# codeowner
